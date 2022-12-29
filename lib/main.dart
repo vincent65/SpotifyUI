@@ -1,6 +1,14 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
-void main() {
+import 'package:flutter/material.dart';
+import 'package:desktop_window/desktop_window.dart';
+import 'package:flutter/foundation.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (!kIsWeb && (Platform.isMacOS || Platform.isLinux || Platform.isWindows)) {
+    await DesktopWindow.setMinWindowSize(const Size(600, 800));
+  }
   runApp(MyApp());
 }
 
@@ -45,5 +53,27 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(),
     );
+  }
+}
+
+class Shell extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Column(
+      children: [
+        Expanded(
+          child: Row(children: [
+            Container(
+              width: 280.0,
+              color: Colors.green,
+              height: double.infinity,
+            ),
+            //PlayList Screen
+          ]),
+        ),
+        Container(height: 84.0, width: double.infinity, color: Colors.blue),
+      ],
+    ));
   }
 }
