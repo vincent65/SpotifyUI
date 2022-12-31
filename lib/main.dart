@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/foundation.dart';
+import 'widgets/widgets.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -64,11 +65,7 @@ class Shell extends StatelessWidget {
       children: [
         Expanded(
           child: Row(children: [
-            Container(
-              width: 280.0,
-              color: Colors.green,
-              height: double.infinity,
-            ),
+            SideMenu(),
             //PlayList Screen
           ]),
         ),
